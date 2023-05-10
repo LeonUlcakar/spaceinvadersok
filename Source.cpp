@@ -10,8 +10,8 @@ const unsigned int PLAYER_START_Y = HEIGHT - 2;
 const unsigned int ENEMY_START_X = 1;
 const unsigned int ENEMY_START_Y = 1;
 const unsigned int ENEMY_SPACING = 4;
-const unsigned int numOfEnemies = 5;
-const unsigned int rows = 2;
+const unsigned int numOfEnemies = 6;
+const unsigned int rows = 3;
 bool gameOver = false;
 int unsigned score = 0;
 const unsigned int totalNumOfEn = rows * numOfEnemies;
@@ -162,7 +162,7 @@ void moveEnemies(enemy enemies[], player& p1) {
             for (int j = i + numOfEnemies; j < totalNumOfEn; j += numOfEnemies) {
                 if (enemies[j].isAlive) {
                     enemies[j].enemyBelow = true;
-                    continue;
+                    //continue;
                 }
             }
 
