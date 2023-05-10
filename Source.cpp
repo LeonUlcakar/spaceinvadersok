@@ -10,8 +10,8 @@ const unsigned int PLAYER_START_Y = HEIGHT - 2;
 const unsigned int ENEMY_START_X = 1;
 const unsigned int ENEMY_START_Y = 1;
 const unsigned int ENEMY_SPACING = 4;
-const unsigned int numOfEnemies = 7;
-const unsigned int rows = 4;
+const unsigned int numOfEnemies = 5;
+const unsigned int rows = 2;
 bool gameOver = false;
 int unsigned score = 0;
 const unsigned int totalNumOfEn = rows * numOfEnemies;
@@ -38,7 +38,11 @@ struct enemy {
 
 
 void drawBoard(player p1, enemy enemies[]) {
-    system("cls");
+    //system("cls");
+    COORD coord;
+    coord.X = 0;
+    coord.Y = 0;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
     for (int i = 0; i < WIDTH + 2; i++) {
         cout << "-";
     }
@@ -157,8 +161,8 @@ void moveEnemies(enemy enemies[], player& p1) {
 
             for (int j = i + numOfEnemies; j < totalNumOfEn; j += numOfEnemies) {
                 if (enemies[j].isAlive) {
-                    enemies[i].enemyBelow = true;
-                    //return;
+                    enemies[j].enemyBelow = true;
+                    continue;
                 }
             }
 
@@ -267,7 +271,7 @@ int main() {
             movePlayer(input, player1);
         }
         timer++;
-        Sleep(2);
+        Sleep(20);
     }
     cout << "GAME OVER";
     return 0;
